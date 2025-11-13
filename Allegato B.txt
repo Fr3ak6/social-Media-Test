@@ -1,0 +1,23 @@
+channels (id PK, name, created_at, updated_at)
+
+channel_user (FK: user_id → users, channel_id → channels)
+(id PK, user_id, channel_id, created_at, updated_at)
+
+comments (FK: post_id → posts, user_id → users)
+(id PK, post_id, user_id, content, created_at, updated_at)
+
+posts (FK: user_id → users, channel_id → channels)
+(id PK, user_id, title, content, image_path, votes, created_at, updated_at, channel_id)
+
+tags(id PK, name, created_at, updated_at)
+
+post_tag (FK: post_id → posts, tag_id → tags)
+(id PK, post_id, tag_id, created_at, updated_at)
+
+sessions (FK: user_id → users)
+(id PK, user_id, ip_address, user_agent, payload, last_activity)
+
+users(id PK, name, email UNIQUE, email_verified_at, password, remember_token, created_at, updated_at)
+
+votes (FK: user_id → users, post_id → posts)
+(id PK, user_id, post_id, votable_id, votable_type, value, created_at, updated_at)
